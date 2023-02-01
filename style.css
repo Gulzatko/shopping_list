@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+
+:root{
+    --done-color:#66EECE;
+    --delete-color:#A866EE;
+    --secondary-color:#D59F80;
+}
+
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(#A588E8,#CBBEE9);
+    color:whitesmoke;
+    min-height: 100vh;
+}
+
+header{
+    font-size:1.5rem
+}
+header,
+form {
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 20vh;
+}
+form button{
+    color:var(--secondary-color);
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background-color: var(--secondary-color);
+    color:whitesmoke;
+}
+.todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select{
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border:none;
+  color:var(--secondary-color);
+  width:10rem;
+  cursor:pointer;
+  padding: 1rem;
+  font-size: 1rem;
+
+}
+.select{
+  margin:1rem;  
+  position: relative;
+  overflow: hidden;
+}
+.select::after {
+    content:"";
+    position: absolute;
+    right: 0;
+    top:0;
+    background-color: var(--secondary-color);
+    padding:1rem;
+    pointer-events: none;
+}
+.select:hover::after {
+   background-color: whitesmoke;
+   color: var(--secondary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
