@@ -132,6 +132,27 @@ select{
    background-color: whitesmoke;
    color: var(--secondary-color);
 }
+/* alert */
+.alert {
+    visibility: hidden;
+    margin:5px;
+    padding: 0.5rem;
+    width:40%;
+    text-align: center;
+
+}
+.error {
+    border: solid 1px rgba(231,110,225, 0.596);
+    background-color: rgba(246,230, 247,0.767);
+    color: var(--secondary-color);
+}
+.success{
+    border: solid 1px green;
+    background-color: #8dc8ceb2;
+    color: var(--secondary-color);
+}
+
+}
 
 
 
