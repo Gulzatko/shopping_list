@@ -11,8 +11,8 @@ const addTodo=(event)=>{
     event.preventDefault()
      if(!todoInput.value) {
         alert.innerText = "Please enter a valid value"
-        alert.style.visibility = 'visible'
         alert.classList.add("error")
+        alert.style.visibility = 'visible'
         setTimeout(()=>{
         alert.style.visibility = 'hidden'
         alert.classList.remove("error")
@@ -77,7 +77,8 @@ const addTodo=(event)=>{
   const item = event.target
   if(item.classList.contains("delete-btn")){
      const todo = item.parentElement;
-     todo.classList.add("fall");
+     todo.classList.add("fall")
+     removeLocalTodos(todo)
      todo.addEventListener("transitionend", ()=>{
        todo.remove()
      })
@@ -90,7 +91,7 @@ const addTodo=(event)=>{
 }
 
 const filterTodo = (event)=>{
-  const todos = todoList.childNodes
+  const todos = todoList.childNodes;
   todos.forEach(function(todo){
      console.log(event.target.value)
      switch(event.target.value) {
@@ -126,7 +127,7 @@ const saveLocalTodos = (todo)=>{
   localStorage.setItem("todos",JSON.stringify(todos))
 }
 
-const getData =()=> {
+const getTodos =()=> {
   let todos;
   if(localStorage.getItem('todos')== null){
     todos = []
@@ -134,8 +135,7 @@ const getData =()=> {
     todos = JSON.parse(localStorage.getItem("todos"))
   }
    todos.forEach(function(todo){
-
-    const todoDiv= document.createElement("div")
+     const todoDiv= document.createElement("div")
     todoDiv.classList.add("todoDiv")
     todoDiv.innerHTML = `
         <li class="todo-item">${todo}</li>
@@ -149,8 +149,25 @@ const getData =()=> {
    })
 }
 
+const removeLocalTodos = (todo)=>{
+  let todos;
+  if(localStorage.getItem('todos')===null){
+    todos = []
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"))
+  }
+   const text = todo.children[0].innerText
+ 
+   console.log(text)
+  //  let startIndex = todos.indexOf(text)
+  //  todos.splice(startIndex,1)
+  // console.log(todos)
+  todos.splice(todos.indexOf(text),1)
+   localStorage.setItem("todos",JSON.stringify(todos))
+}
+
   //event-listeners 
 todoButton.addEventListener("click", addTodo)
 todoList.addEventListener("click",deleteComplete)
 filterOption.addEventListener("click", filterTodo)
-document.addEventListener("DOMContentLoaded",getData)
+document.addEventListener("DOMContentLoaded",getTodos)
